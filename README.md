@@ -6,8 +6,27 @@
 [![React 19](https://img.shields.io/badge/Frontend-React%2019-61DAFB.svg)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Bundler-Vite%208-646CFF.svg)](https://vitejs.dev)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-38B2AC.svg)](https://tailwindcss.com)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAmal-05%2FEarthSight)
+[![Deploy to Render](https://render.com/images/deploy-to-render.svg)](https://render.com/deploy?repo=https://github.com/Amal-05/EarthSight)
 
 **EarthSight** is an end-to-end full-stack AI/GIS platform for multi-temporal satellite land-use semantic segmentation, change detection, geospatial statistics quantification, natural language query parsing, and automated AI summary report generation.
+
+---
+
+## ☁️ One-Click Cloud Hosting (Vercel & Render)
+
+### Option A: Deploying to Vercel
+1. Import `https://github.com/Amal-05/EarthSight` into [Vercel](https://vercel.com).
+2. Vercel will automatically detect `vercel.json` and build both the Vite React frontend and the Python serverless API backend.
+3. Click **Deploy**.
+
+### Option B: Deploying to Render
+1. Go to [Render Blueprints](https://dashboard.render.com/blueprints).
+2. Connect your GitHub repository `https://github.com/Amal-05/EarthSight`.
+3. Render will auto-detect `render.yaml` and provision both:
+   - `earthsight-backend` (FastAPI Python Web Service)
+   - `earthsight-frontend` (Static Web Site)
+4. Click **Apply**.
 
 ---
 
@@ -37,43 +56,7 @@
 
 ---
 
-## 🏗️ System Architecture
-
-```text
-EarthSight/
-├── backend/
-│   ├── app/
-│   │   ├── api/                  # REST Endpoints (/health, /search, /semantic-query, etc.)
-│   │   ├── satellite/            # Demo & Planetary Computer Sentinel-2 STAC Providers
-│   │   ├── preprocessing/        # Image Aligner, Crop, & Normalizer
-│   │   ├── segmentation/         # 6-Class Feature Segmenter Engine
-│   │   ├── change_detection/     # Spatial Change Matrix & RGBA Overlay Generator
-│   │   ├── statistics/           # Geospatial Area & Percentage Calculator (km²)
-│   │   ├── semantic_search/      # Natural Language Query Parser
-│   │   ├── reporting/            # AI Narrative Summary Generator
-│   │   └── database/             # SQLite & PostGIS Session Persistence
-│   ├── tests/                    # Pytest Suite
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   │   ├── components/           # Navbar, MapView, ImageSlider, ControlPanel, Charts, etc.
-│   │   ├── services/             # Axios API Client
-│   │   ├── App.jsx               # Main Layout Orchestrator
-│   │   └── index.css             # Glassmorphic Theme & Leaflet Overlays
-│   └── package.json
-├── docker-compose.yml
-├── Dockerfile.backend
-├── Dockerfile.frontend
-└── README.md
-```
-
----
-
-## ⚡ Quickstart Guide
-
-### Prerequisites
-- Python 3.10+
-- Node.js v18+
+## ⚡ Local Quickstart Guide
 
 ### 1. Clone Repository
 ```bash
@@ -83,10 +66,7 @@ cd EarthSight
 
 ### 2. Backend Setup
 ```bash
-# Install Python dependencies
 pip install -r backend/requirements.txt
-
-# Run backend development server
 set PYTHONPATH=backend
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
@@ -94,7 +74,6 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 
 ### 3. Frontend Setup
 ```bash
-# In a new terminal tab
 cd frontend
 npm install
 npm run dev
@@ -105,22 +84,11 @@ npm run dev
 
 ## 🐳 Docker Deployment
 
-To run the entire stack with Docker Compose:
-
 ```bash
 docker-compose up --build
 ```
 - Frontend: `http://localhost:5173`
 - Backend API: `http://localhost:8000`
-
----
-
-## 🧪 Running Unit Tests
-
-```bash
-set PYTHONPATH=backend
-python -m pytest backend/tests/test_pipeline.py
-```
 
 ---
 
