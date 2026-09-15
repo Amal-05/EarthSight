@@ -4,7 +4,12 @@ class Settings:
     PROJECT_NAME: str = "EarthSight API"
     VERSION: str = "1.0.0"
     API_PREFIX: str = "/api"
-    
+
+    # Server settings
+    PORT: int = int(os.environ.get("PORT", 8000))
+    HOST: str = os.environ.get("HOST", "0.0.0.0")
+    ENVIRONMENT: str = os.environ.get("ENVIRONMENT", "development")
+
     # Feature Classes
     FEATURE_CLASSES: list = [
         "buildings",
@@ -14,7 +19,7 @@ class Settings:
         "agriculture",
         "barren"
     ]
-    
+
     # Color map for segmentation classes (RGB)
     CLASS_COLORS: dict = {
         "buildings": [239, 68, 68],      # Red
@@ -24,7 +29,7 @@ class Settings:
         "agriculture": [234, 179, 8],    # Yellow
         "barren": [156, 163, 175]        # Gray
     }
-    
+
     # Change Detection Colors
     CHANGE_COLORS: dict = {
         "increase": [34, 197, 94],       # Green
@@ -32,7 +37,7 @@ class Settings:
         "significant": [245, 158, 11],   # Yellow/Orange
         "no_change": [100, 116, 139]     # Slate Gray
     }
-    
+
     # Demo default location: Austin Tech Corridor / Suburban expansion zone
     DEFAULT_AOI: dict = {
         "name": "Austin Suburban Expansion Corridor",

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_BASE = '/api';
+// VITE_API_BASE_URL is set to the Render backend URL in production (e.g. https://earthsight.onrender.com/api)
+// Falls back to /api for local dev (proxied by Vite) and Vercel serverless
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 export const checkBackendHealth = async () => {
   try {

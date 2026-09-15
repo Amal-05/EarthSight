@@ -1,11 +1,14 @@
 services:
-  # FastAPI Backend & Frontend Web Service on Render (Free Tier)
   - type: web
     name: earthsight
     env: python
     plan: free
-    buildCommand: "pip install -r backend/requirements.txt && cd frontend && npm install && npm run build"
-    startCommand: "PYTHONPATH=backend python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    pythonVersion: "3.11.0"
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "PYTHONPATH=. uvicorn app.main:app --host 0.0.0.0 --port $PORT"
     envVars:
       - key: ENVIRONMENT
         value: production
+      - key: PYTHON_VERSION
+        value: "3.11.0"
