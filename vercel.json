@@ -1,27 +1,18 @@
 {
-  "version": 2,
-  "framework": "vite",
-  "builds": [
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "rewrites": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    },
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "api/index.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
+  "env": {
+    "VITE_API_BASE_URL": "https://earthsight.onrender.com/api"
+  },
+  "build": {
+    "env": {
+      "VITE_API_BASE_URL": "https://earthsight.onrender.com/api"
     }
-  ]
+  }
 }
